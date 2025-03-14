@@ -1,0 +1,39 @@
+# Ignorar directorios de datos de Docker
+workspace/mysql_data/
+workspace/postgres_data/
+workspace/pgadmin_data/
+# workspace/driver_jdbc/
+# workspace/data/raw/
+
+# Ignorar checkpoints de Jupyter Notebook
+workspace/.ipynb_checkpoints/
+
+# Ignorar archivos de entorno
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Ignorar archivos de configuración de IDE
+.idea/
+.vscode/
+
+# Ignorar archivos generados por Docker
+**/__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.db
+*.sqlite3
+
+# Ignorar logs y archivos temporales
+*.log
+*.tmp
+*.swp
+*.swo
+
+# Ignorar archivos de configuración local
+local_settings.py
