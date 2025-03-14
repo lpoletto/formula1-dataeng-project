@@ -1,0 +1,26 @@
+services:
+  # PySpark con Jupyter para procesamiento y análisis
+  jupyter-pyspark:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: jupyter-pyspark
+    ports:
+      - "8888:8888"
+    volumes:
+      - ./notebooks:/home/lautaro/notebooks
+      - ./data/shared:/home/lautaro/shared
+    environment:
+      JUPYTER_ENABLE_LAB: "yes"
+      JUPYTER_TOKEN: "dev"
+    # depends_on:
+    #   - mysql
+    #   - minio
+    #   - trino
+    #   - hive-metastore
+    networks:
+      - data_network
+
+networks:
+  data_network:
+    driver: bridge
