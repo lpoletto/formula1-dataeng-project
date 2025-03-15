@@ -37,3 +37,6 @@ venv.bak/
 
 # Ignorar archivos de configuración local
 local_settings.py
+
+# Ignorar MinIO data
+/data/.minio.sys/
