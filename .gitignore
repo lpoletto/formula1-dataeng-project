@@ -1,5 +1,5 @@
 # Ignorar directorios de datos de Docker
-workspace/mysql_data/
+/mysql_data/
 workspace/postgres_data/
 workspace/pgadmin_data/
 # workspace/driver_jdbc/
