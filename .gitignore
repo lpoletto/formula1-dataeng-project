@@ -40,3 +40,4 @@ local_settings.py
 
 # Ignorar MinIO data
 /data/.minio.sys/
+/minio.s3cfg
