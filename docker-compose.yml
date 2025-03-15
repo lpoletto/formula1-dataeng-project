@@ -1,4 +1,26 @@
 services:
+  mysql:
+    hostname: mysql
+    image: mysql:8.0.32
+    container_name: mysql_db
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    ports:
+      - "3307:3306"  # Mapeo el puerto 3307 en la máquina local al puerto 3306 dentro del contenedor
+    volumes:
+      - ./mysql_data:/var/lib/mysql
+      - ./f1db.sql:/docker-entrypoint-initdb.d/f1db.sql
+    networks:
+      - data-network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "f1user", "-pf1password"]
+      interval: 5s
+      timeout: 10s
+      retries: 5
+
   trino:
     hostname: trino
     image: 'trinodb/trino:351'
@@ -72,6 +94,7 @@ services:
       - minio
       - trino
       - hive-metastore
+      - mysql
     networks:
       - data-network
 
